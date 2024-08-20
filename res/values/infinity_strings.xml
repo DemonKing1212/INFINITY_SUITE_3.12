@@ -605,4 +605,8 @@
     <string name="qs_classic_tile_icon_size_summary">Adjust the icon size for classic QS tiles</string>
     <string name="qs_classic_tile_row_spacing_title">Classic tile row spacing</string>
     <string name="qs_classic_tile_row_spacing_summary">Adjust the vertical spacing between rows in classic mode</string>
+
+     <string name="themes_boot_animation_title">Boot animation</string>
+    <string name="themes_boot_animation_summary">Set boot animation style</string>
+
 </resources>
