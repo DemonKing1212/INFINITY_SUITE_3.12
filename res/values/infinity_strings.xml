@@ -592,4 +592,8 @@
     <string name="doze_peek_title">AOD Peek</string>
     <string name="doze_peek_summary">Show ambient display briefly when the screen turns off</string>
     <string name="doze_peek_duration_title">Peek duration</string>
+
+        <string name="themes_boot_animation_title">Boot animation</string>
+    <string name="themes_boot_animation_summary">Set boot animation style</string>
+
 </resources>
