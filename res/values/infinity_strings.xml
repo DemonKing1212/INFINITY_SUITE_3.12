@@ -640,4 +640,8 @@
     <!-- Lockscreen lyrics -->
     <string name="infinity_bar_lockscreen_media_lyrics_title">Display music lyrics on lockscreen</string>
     <string name="infinity_bar_lockscreen_media_lyrics_summary">Show lyrics of supported playing music on lockscreen and AOD whenever available</string>
+
+    <string name="themes_boot_animation_title">Boot animation</string>
+    <string name="themes_boot_animation_summary">Set boot animation style</string>
+
 </resources>
