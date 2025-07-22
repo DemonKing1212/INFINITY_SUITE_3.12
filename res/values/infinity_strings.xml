@@ -708,4 +708,9 @@
     <string name="status_bar_tint_icons_title">Tint status bar icons</string>
     <string name="status_bar_tint_icons_summary">Tint status bar icons with system accent color</string>
 
+    <!-- Power off verify -->
+    <string name="power_off_verify_footer">Power off verification protects your device by preventing others from turning it off immediately after it\'s lost, increasing the chances of recovery. You only need to enter your lock screen password when powering off or restarting the phone from the lock screen.</string>
+    <string name="power_off_verify_summary">When your device is locked, you\'ll need to use your password to power off or restart.</string>
+    <string name="power_off_verify_title">Power off verify</string>
+
 </resources>
