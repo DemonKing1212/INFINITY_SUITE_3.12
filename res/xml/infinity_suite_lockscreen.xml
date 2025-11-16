@@ -95,7 +95,15 @@
             android:entries="@array/screen_off_animation_entries"
             android:entryValues="@array/screen_off_animation_values"
             android:defaultValue="0" />
+
+    <Preference
+        android:key="nowplaying_settings"
+        android:title="@string/nowplaying_title"
+        android:summary="@string/nowplaying_summary"
+        android:fragment="com.infinity.suite.fragments.NowplayingSettings" />
+
     </PreferenceCategory>
+
 
     <PreferenceCategory
         android:key="lockscreen_general_category"
