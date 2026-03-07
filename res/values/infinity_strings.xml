@@ -169,6 +169,11 @@
     <string name="clock_chip_gradient_angle_title">Gradient angle</string>
     <string name="clock_chip_gradient_angle_summary">Direction of the gradient (0° = left→right, 90° = top→bottom)</string>
 
+    <!-- Mask text -->
+    <string name="clock_chip_gradient_mask_text_title">Clock text style</string>
+    <string name="clock_chip_gradient_mask_text_default">Default</string>
+    <string name="clock_chip_gradient_mask_text_mask">Transparent (Mask)</string>
+
     <!-- Hide screen capture status -->
     <string name="hide_screen_capture_status_title">Hide screen capture status</string>
     <string name="hide_screen_capture_status_summary">Hide screen capture and screen record status from all applications. Can be convenient in some cases but may lead to privacy leaks. Need to restart applications for the change to take effect.</string>
