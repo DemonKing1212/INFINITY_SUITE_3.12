@@ -593,8 +593,14 @@
     <string name="doze_peek_summary">Show ambient display briefly when the screen turns off</string>
     <string name="doze_peek_duration_title">Peek duration</string>
 
-        <string name="themes_boot_animation_title">Boot animation</string>
+    <string name="themes_boot_animation_title">Boot animation</string>
     <string name="themes_boot_animation_summary">Set boot animation style</string>
+    <string name="boot_animation_custom_pick">Pick ZIP file</string>
+    <string name="boot_animation_custom_pick_summary">Select a custom bootanimation.zip</string>
+    <string name="boot_animation_applied_error">Failed to apply boot animation</string>
+    <string name="boot_animation_preview_loading">Loading preview…</string>
+    <string name="boot_animation_no_preview">No preview available</string>
+    <string name="boot_animation_style_unknown">Unknown</string>
 
     <!-- Themes/Boot animation preview -->
     <string name="boot_animation_preview_desc">Preview of the selected boot animation</string>
