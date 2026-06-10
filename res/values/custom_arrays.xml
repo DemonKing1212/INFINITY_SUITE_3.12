@@ -1101,5 +1101,16 @@
     <string-array name="dynamic_bar_chip_style_values">
         <item>0</item>
         <item>1</item>
+
+    <!-- nowplaying color -->
+    <string-array name="nowplaying_color_mode_entries" translatable="false">
+        <item>White</item>
+        <item>Accent color</item>
+        <item>Album art</item>
+    </string-array>
+    <string-array name="nowplaying_color_mode_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 </resources>
