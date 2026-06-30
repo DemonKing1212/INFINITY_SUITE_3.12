@@ -23,6 +23,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.os.SystemProperties;
 
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -45,7 +46,7 @@ import com.infinity.suite.utils.DeviceUtils;
 import com.infinity.support.preferences.CustomSeekBarPreference;
 import com.infinity.support.preferences.SystemSettingListPreference;
 import com.infinity.support.preferences.SystemSettingSwitchPreference;
-
+import com.infinity.support.preferences.SystemSettingSeekBarPreference;
 import lineageos.providers.LineageSettings;
 
 import java.util.List;
@@ -81,6 +82,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String KEY_CUSTOM_GRADIENT_END_COLOR = "custom_gradient_end_color";
     private static final String DEFAULT_CUSTOM_GRADIENT_COLOR = "#ff0000";
     private static final String HYPEROS_CUSTOM_GRADIENT_COLOR = "#0a84ff";
+    private static final String SHADE_SCRIM_ALPHA = "shade_scrim_alpha";
 
     private static final int QS_STYLE_STOCK = 0;
     private static final int QS_STYLE_INFINITY_X = 1;
@@ -105,6 +107,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private SwitchPreferenceCompat mQsTileLabelHide;
     private ListPreference mInfinityQsStyle;
     private SystemSettingSwitchPreference mSplitQsEnabled;
+    private SystemSettingSeekBarPreference mShadeScrimAlphaPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -114,6 +117,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         final Context context = getContext();
         final ContentResolver resolver = context.getContentResolver();
+        final int defScrimAlpha =
+        (SystemProperties.getBoolean("ro.custom.blur.enable", false)
+                && Settings.Global.getInt(resolver,
+                        Settings.Global.DISABLE_WINDOW_BLURS, 0) == 0)
+                ? 60 : 100;
+
+        mShadeScrimAlphaPref = findPreference(SHADE_SCRIM_ALPHA);
+        mShadeScrimAlphaPref.setDefaultValue(defScrimAlpha);
+        mShadeScrimAlphaPref.setOnPreferenceChangeListener(this);
+        int shadeScrimAlpha = Settings.System.getIntForUser(resolver,
+                SHADE_SCRIM_ALPHA, defScrimAlpha, UserHandle.USER_CURRENT);
+        mShadeScrimAlphaPref.setValue(shadeScrimAlpha);
         final PreferenceScreen prefScreen = getPreferenceScreen();
 
         mShowBrightnessSlider = findPreference(KEY_SHOW_BRIGHTNESS_SLIDER);
@@ -391,6 +406,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         } else if (preference == mQsPanelStyle) {
             int value = Integer.parseInt((String) newValue);
             updatePanelStylePrefs(value);
+            return true;
+        }
+         else if (preference == mShadeScrimAlphaPref) {
+            int value = (Integer) newValue;
+            Settings.System.putIntForUser(resolver, SHADE_SCRIM_ALPHA,
+                    value, UserHandle.USER_CURRENT);
             return true;
         }
         return false;
