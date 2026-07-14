@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.evolution.settings.utils;
+package com.infinity.suite.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -25,7 +25,6 @@ import android.graphics.drawable.Drawable;
 import android.os.SystemProperties;
 import android.util.Log;
 
-import com.android.internal.util.evolution.PixelPropsUtils;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -72,13 +71,10 @@ public class BootAnimationUtils {
      * boot animation overrides have no effect. Uses PixelPropsUtils which
      * checks ro.product.model and ro.soc.manufacturer.
      */
-    public static boolean isPixelDevice() {
-        if (PixelPropsUtils.isCustomForkBuild()) {
-            return true;
-        }
 
-        return PixelPropsUtils.isSupportedPixelDevice();
-    }
+     public static boolean isPixelDevice() {
+    return false;
+     }
 
     /**
      * Returns true when the ROM was built without custom boot animations,
