@@ -612,4 +612,8 @@
 
     <string name="boot_animation_applied">Boot animation applied</string>
 
+    <!-- Smile Switch -->
+    <string name="smile_switch_title">Smile Switch</string>
+    <string name="smile_switch_summary">Enable Smile Switch</string>
+
 </resources>
