@@ -614,4 +614,6 @@
     <string name="boot_animation_preview_summary">Displays a preview of the currently selected boot animation</string>
     <string name="boot_animation_preview_title">Boot animation preview</string>
 
+    <string name="boot_animation_applied">Boot animation applied</string>
+
 </resources>
