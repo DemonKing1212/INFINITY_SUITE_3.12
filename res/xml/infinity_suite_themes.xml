@@ -98,4 +98,10 @@ settings:controller="com.infinity.suite.fragments.BootAnimationController" />
         android:summary="@string/theme_customization_navbar_summary"
         android:fragment="com.infinity.suite.fragments.NavbarStyles"/>
 
+<com.infinity.suite.preferences.OverlaySwitchPreference
+    android:key="com.android.settingslib.smileswitch"
+    android:title="@string/smile_switch_title"
+    android:summary="@string/smile_switch_summary"
+    android:defaultValue="false" />
+
 </PreferenceScreen>
