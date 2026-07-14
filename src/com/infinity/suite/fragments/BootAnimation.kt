@@ -251,6 +251,7 @@ private fun BootAnimationScreen(context: android.content.Context) {
                 },
                 modifier = Modifier
                     .fillMaxWidth()
+                    .height(1100.dp)
                     .padding(horizontal = 16.dp),
             )
 
