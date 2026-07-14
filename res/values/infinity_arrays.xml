@@ -380,7 +380,7 @@
 
  <!-- Themes/Boot animation -->
    <string-array name="themes_boot_animation_entries">
-        <item>Evolution X</item>
+        <item>Infinity X</item>
         <item>Evolution X (Reveal)</item>
         <item>AOKP</item>
         <item>CyanogenMod</item>
