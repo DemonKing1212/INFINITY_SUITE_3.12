@@ -91,26 +91,6 @@ settings:controller="com.infinity.suite.fragments.BootAnimationController" />
         android:entryValues="@array/emoji_style_values"
         android:defaultValue="android" />
 
-    <PreferenceCategory
-        android:key="themes_audio_category"
-        android:title="@string/themes_audio_category">
-
-        <!-- Lock sound -->
-        <org.evolution.settings.preferences.GlobalSettingListPreference
-            android:key="lock_sound"
-            android:title="@string/themes_lock_sound_title"
-            android:entries="@array/themes_lock_unlock_sounds_entries"
-            android:entryValues="@array/themes_lock_sounds_values"
-            android:defaultValue="/product/media/audio/ui/Lock.ogg" />
-
-        <!-- Unlock sound -->
-        <org.evolution.settings.preferences.GlobalSettingListPreference
-            android:key="unlock_sound"
-            android:title="@string/themes_unlock_sound_title"
-            android:entries="@array/themes_lock_unlock_sounds_entries"
-            android:entryValues="@array/themes_unlock_sounds_values"
-            android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
-    </PreferenceCategory>
 
     <!-- Navbar Style -->
     <Preference
@@ -124,5 +104,26 @@ settings:controller="com.infinity.suite.fragments.BootAnimationController" />
     android:title="@string/smile_switch_title"
     android:summary="@string/smile_switch_summary"
     android:defaultValue="false" />
+
+    <PreferenceCategory
+        android:key="themes_audio_category"
+        android:title="@string/themes_audio_category">
+
+        <!-- Lock sound -->
+        <com.infinity.support.preferences.GlobalSettingListPreference
+            android:key="lock_sound"
+            android:title="@string/themes_lock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_lock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Lock.ogg" />
+
+        <!-- Unlock sound -->
+        <com.infinity.support.preferences.GlobalSettingListPreference
+            android:key="unlock_sound"
+            android:title="@string/themes_unlock_sound_title"
+            android:entries="@array/themes_lock_unlock_sounds_entries"
+            android:entryValues="@array/themes_unlock_sounds_values"
+            android:defaultValue="/product/media/audio/ui/Unlock.ogg" />
+    </PreferenceCategory>
 
 </PreferenceScreen>
