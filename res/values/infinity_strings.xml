@@ -662,4 +662,8 @@
     <string name="disguise_props_for_music_app_title">Disguise device for music apps</string>
     <string name="disguise_props_for_music_app_summary">Disguise device in some music applications for support status bar lyric. After changing this toggle, you have to restart applications for the change to take effect.</string>
 
+    <!-- status bar system icons popup -->
+    <string name="status_bar_icons_popup_title">System icons popup</string>
+    <string name="status_bar_icons_popup_summary">Long-press the status bar icons to show quick toggles, battery, and network info</string>
+
 </resources>
