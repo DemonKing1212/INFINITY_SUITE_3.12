@@ -18,6 +18,8 @@ package com.infinity.suite.fragments;
 
 import static android.os.UserHandle.USER_SYSTEM;
 
+import com.infinity.suite.utils.SystemUtils;
+import com.infinity.support.preferences.GlobalSettingListPreference;
 import android.app.ActivityManagerNative;
 import android.app.UiModeManager;
 import android.content.Context;
@@ -82,6 +84,8 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
     private Context mContext;
     private SystemSettingListPreference mEmojiStylePref;
     private SystemSettingListPreference mSystemAnimationStylePref;
+    private GlobalSettingListPreference mLockSound;
+private GlobalSettingListPreference mUnlockSound;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +94,16 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
         addPreferencesFromResource(R.xml.infinity_suite_themes);
 
         mContext = getActivity();
+        mLockSound = findPreference("lock_sound");
+if (mLockSound != null) {
+    mLockSound.setOnPreferenceChangeListener(this);
+}
+
+mUnlockSound = findPreference("unlock_sound");
+if (mUnlockSound != null) {
+    mUnlockSound.setOnPreferenceChangeListener(this);
+}
+
 
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen screen = getPreferenceScreen();
@@ -124,7 +138,10 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
-        return false;
+      if (preference == mLockSound || preference == mUnlockSound) {
+    SystemUtils.showSystemUiRestartDialog(getContext());
+    return true;
+}return false;
     }
 
     private void updateSystemAnimationStyleAvailability() {
