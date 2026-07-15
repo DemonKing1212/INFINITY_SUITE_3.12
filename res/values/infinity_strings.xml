@@ -666,4 +666,7 @@
     <string name="status_bar_icons_popup_title">System icons popup</string>
     <string name="status_bar_icons_popup_summary">Long-press the status bar icons to show quick toggles, battery, and network info</string>
 
+    <string name="hardware_keys_action_system_popup">Trigger system popup ui</string>
+    <string name="status_bar_icons_popup_summary">Long-press the status bar icons to show quick toggles, battery, and network info (not use with split shade)</string>
+
 </resources>
