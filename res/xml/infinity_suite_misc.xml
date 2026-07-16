@@ -138,5 +138,11 @@
         android:summary="@string/pocket_judge_summary"
         android:defaultValue="false" />
 
+        <com.infinity.support.preferences.SystemSettingSwitchPreference
+            android:key="screenshot_clipboard_only"
+            android:title="@string/screenshot_clipboard_only_title"
+            android:summary="@string/screenshot_clipboard_only_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 </PreferenceScreen>
