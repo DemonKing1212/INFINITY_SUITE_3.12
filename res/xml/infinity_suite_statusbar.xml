@@ -64,7 +64,7 @@
             android:key="statusbar_clock_chip"
             android:title="@string/statusbar_clock_chip_title"
             android:summary="@string/statusbar_clock_chip_summary"
-            android:fragment="com.infinity.suite.fragments.ClockChipSettings"
+            android:fragment="com.infinity.suite.fragments.ClockChipSettings" />
 
     </PreferenceCategory>
 
