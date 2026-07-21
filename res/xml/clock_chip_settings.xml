@@ -19,24 +19,24 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/statusbar_clock_chip_title">
 
-    <org.lunaris.settings.preferences.ClockBackgroundChipPreference
+    <com.infinity.support.preferences.ClockBackgroundChipPreference
         android:key="statusbar_clock_chip"
         android:title="@string/statusbar_clock_chip_title"
         android:summary="@string/statusbar_clock_chip_summary" />
 
-    <org.lunaris.settings.preferences.colorpicker.SystemSettingColorPickerPreference
+    <com.infinity.support.colorpicker.SystemSettingColorPickerPreference
         android:key="statusbar_clock_chip_gradient_start_color"
         android:title="@string/clock_chip_gradient_start_color_title"
         android:summary="@string/clock_chip_gradient_start_color_summary"
         android:visible="false" />
 
-    <org.lunaris.settings.preferences.colorpicker.SystemSettingColorPickerPreference
+    <com.infinity.support.colorpicker.SystemSettingColorPickerPreference
         android:key="statusbar_clock_chip_gradient_end_color"
         android:title="@string/clock_chip_gradient_end_color_title"
         android:summary="@string/clock_chip_gradient_end_color_summary"
         android:visible="false" />
 
-    <org.lunaris.settings.preferences.SystemSettingSeekBarPreference
+    <com.infinity.support.preferences.SystemSettingSeekBarPreference
         android:key="statusbar_clock_chip_gradient_angle"
         android:title="@string/clock_chip_gradient_angle_title"
         android:summary="@string/clock_chip_gradient_angle_summary"
@@ -47,7 +47,7 @@
         settings:units="°"
         android:visible="false" />
 
-    <org.lunaris.settings.preferences.SystemSettingListPreference
+    <com.infinity.support.preferences.SystemSettingListPreference
         android:key="statusbar_clock_chip_gradient_mask_text"
         android:title="@string/clock_chip_gradient_mask_text_title"
         android:summary="%s"

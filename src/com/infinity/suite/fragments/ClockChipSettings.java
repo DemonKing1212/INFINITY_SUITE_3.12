@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lunaris.settings.fragments.statusbar;
+package com.infinity.suite.fragments;
 
 import android.content.ContentResolver;
 import android.graphics.Color;
@@ -28,8 +28,8 @@ import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-import org.lunaris.settings.preferences.SystemSettingSeekBarPreference;
-import org.lunaris.settings.preferences.colorpicker.SystemSettingColorPickerPreference;
+import com.infinity.support.preferences.SystemSettingSeekBarPreference;
+import com.infinity.support.colorpicker.SystemSettingColorPickerPreference;
 
 public class ClockChipSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -161,6 +161,7 @@ public class ClockChipSettings extends SettingsPreferenceFragment
 
     @Override
     public int getMetricsCategory() {
-        return MetricsProto.MetricsEvent.LUNARIS;
+     return MetricsProto.MetricsEvent.INFINITY;
+
     }
 }
