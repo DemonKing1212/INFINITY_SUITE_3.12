@@ -19,7 +19,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/statusbar_clock_chip_title">
 
-    <com.infinity.support.preferences.ClockBackgroundChipPreference
+    <com.infinity.suite.fragments.ClockBackgroundChipPreference
         android:key="statusbar_clock_chip"
         android:title="@string/statusbar_clock_chip_title"
         android:summary="@string/statusbar_clock_chip_summary" />
