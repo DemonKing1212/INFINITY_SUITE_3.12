@@ -219,7 +219,8 @@ class ClockBackgroundChipPreference @JvmOverloads constructor(
                     styleIndex,
                     UserHandle.USER_CURRENT
                 )
-
+                callChangeListener(styleIndex)
+                notifyChanged()
                 summary = labelForIndex(styleIndex).orEmpty()
 
                 notifyItemChanged(old)
