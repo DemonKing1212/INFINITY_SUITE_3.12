@@ -744,4 +744,8 @@
     <string name="power_off_verify_summary">When your device is locked, you\'ll need to use your password to power off or restart.</string>
     <string name="power_off_verify_title">Power off verify</string>
 
+    <!-- Pulse height multiplier -->
+    <string name="pulse_height_multiplier_title">Pulse height</string>
+    <string name="pulse_height_multiplier_summary">Adjust the visualization height</string>
+
 </resources>
