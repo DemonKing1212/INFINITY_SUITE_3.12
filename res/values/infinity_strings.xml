@@ -703,6 +703,8 @@
     <string name="hardware_keys_action_system_popup">Trigger system popup ui</string>
     <string name="status_bar_icons_popup_summary">Long-press the status bar icons to show quick toggles, battery, and network info (not use with split shade)</string>
 
+    <string name="hide_status_bar_in_screenshot_title">Hide status bar in screenshots</string>
+    <string name="hide_status_bar_in_screenshot_summary">Crop the status bar area out of full screenshots</string>
 
     <!-- Now Playing -->
     <string name="nowplaying_title">Now Playing</string>
