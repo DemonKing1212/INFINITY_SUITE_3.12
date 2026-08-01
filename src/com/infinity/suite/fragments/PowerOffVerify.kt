@@ -13,9 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.infinity.suite.fragments
 
-import com.android.settings.R
-import com.android.settings.preferences.BasePreferenceFragment
+import android.os.Bundle
 
-class PowerOffVerify : BasePreferenceFragment(R.xml.power_off_verify)
+import android.provider.Settings
+import androidx.preference.SwitchPreferenceCompat
+import com.android.internal.logging.nano.MetricsProto
+import com.android.settings.R
+import com.android.settings.SettingsPreferenceFragment
+
+class PowerOffVerify : SettingsPreferenceFragment() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        addPreferencesFromResource(R.xml.power_off_verify)
+    }
+
+override fun onResume() {
+    super.onResume()
+
+    val pref = findPreference<SwitchPreferenceCompat>("power_off_verify")
+    pref?.isChecked = Settings.Secure.getInt(
+        requireContext().contentResolver,
+        "power_off_verify",
+        0
+    ) == 1
+}
+
+    override fun getMetricsCategory(): Int {
+        return MetricsProto.MetricsEvent.INFINITY
+    }
+}
