@@ -736,4 +736,8 @@
     <string name="dynamic_island_lyrics_title">Show lyrics</string>
     <string name="dynamic_island_lyrics_summary">Show lyrics for supported apps in a card below the music card in the island</string>
 
+    <!-- Pulse height multiplier -->
+    <string name="pulse_height_multiplier_title">Pulse height</string>
+    <string name="pulse_height_multiplier_summary">Adjust the visualization height</string>
+
 </resources>
