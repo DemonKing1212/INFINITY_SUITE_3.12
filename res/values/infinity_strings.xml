@@ -740,4 +740,8 @@
     <string name="pulse_height_multiplier_title">Pulse height</string>
     <string name="pulse_height_multiplier_summary">Adjust the visualization height</string>
 
+    <string name="dynamic_island_customization_title">Dynamic Island Customization</string>
+    <string name="dynamic_island_width_scale_title">Width Scale</string>
+    <string name="dynamic_island_height_scale_title">Height Scale</string>
+
 </resources>
