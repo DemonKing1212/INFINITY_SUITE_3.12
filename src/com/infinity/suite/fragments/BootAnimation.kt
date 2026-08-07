@@ -101,6 +101,8 @@ import java.util.regex.Pattern
 import java.util.zip.ZipEntry
 import java.util.zip.ZipFile
 import android.widget.ImageView as AndroidImageView
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.isActive
 
 private const val TAG = "BootAnimationSettings"
 private const val BOOTANIMATION_STYLE_KEY = "persist.sys.bootanimation_style"
@@ -141,6 +143,12 @@ class BootAnimation : Fragment() {
 @Composable
 private fun BootAnimationScreen(context: android.content.Context) {
     val scope = rememberCoroutineScope()
+    var previewJob by remember { mutableStateOf<Job?>(null) }
+    DisposableEffect(Unit) {
+    onDispose {
+        previewJob?.cancel()
+    }
+}
     val styleNames = stringArrayResource(R.array.themes_boot_animation_entries).toList()
 
     var selectedIndex by remember {
@@ -148,6 +156,7 @@ private fun BootAnimationScreen(context: android.content.Context) {
     }
     var previewDrawable by remember { mutableStateOf<Drawable?>(null) }
     var isLoadingPreview by remember { mutableStateOf(true) }
+    var lastClickTime by remember { mutableStateOf(0L) }    
     // Bounded by BOOT_ANIMATION_FILES.size (currently 14) — no eviction needed
     val thumbnails = remember { mutableStateMapOf<Int, Drawable?>() }
 
@@ -164,16 +173,27 @@ private fun BootAnimationScreen(context: android.content.Context) {
         }
     }
 
-    fun loadPreview(index: Int) {
-        scope.launch {
-            isLoadingPreview = true
-            previewDrawable = null
-            previewDrawable = withContext(Dispatchers.IO) { loadDrawableForStyle(context, index) }
-            isLoadingPreview = false
-        }
-    }
 
-    fun applyStyle(index: Int) {
+fun loadPreview(index: Int) {
+    previewJob?.cancel() // cancel previous job
+
+    previewJob = scope.launch {
+        isLoadingPreview = true
+        previewDrawable = null
+
+        val drawable = withContext(Dispatchers.IO) {
+            loadDrawableForStyle(context, index)
+        }
+
+        if (!isActive) return@launch // ignore cancelled job
+
+        previewDrawable = drawable
+        isLoadingPreview = false
+    }
+}
+
+fun applyStyle(index: Int) {
+    if (index == selectedIndex) return // prevent same tap spam
         try {
             SystemProperties.set(BOOTANIMATION_STYLE_KEY, index.toString())
             selectedIndex = index
@@ -242,13 +262,18 @@ private fun BootAnimationScreen(context: android.content.Context) {
                 styleNames = styleNames,
                 selectedIndex = selectedIndex,
                 thumbnails = thumbnails,
-                onSelect = { index ->
-                    if (index == BootAnimationUtils.STYLE_CUSTOM) {
-                        fileLauncher.launch(arrayOf("application/zip"))
-                    } else {
-                        applyStyle(index)
-                    }
-                },
+onSelect = { index ->
+
+    val now = System.currentTimeMillis()
+    if (now - lastClickTime < 250) return@StyleSelectorCard
+    lastClickTime = now
+
+    if (index == BootAnimationUtils.STYLE_CUSTOM) {
+        fileLauncher.launch(arrayOf("application/zip"))
+    } else {
+        applyStyle(index)
+    }
+},
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(1100.dp)
