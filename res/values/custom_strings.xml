@@ -1365,4 +1365,9 @@
     <string name="shade_scrim_alpha_title">QS shade scrim opacity</string>
     <string name="shade_scrim_alpha_summary">Adjust the scrim opacity behind the QS shade</string>
 
+    <!-- Media art QS background -->
+    <string name="qs_media_art_scrim_title">Media art QS background</string>
+    <string name="qs_media_art_scrim_summary">Use blurred media artwork as Quick Settings background</string>
+    <string name="qs_media_art_dim_amount_title">QS media art scrim dim amount</string>
+
 </resources>
