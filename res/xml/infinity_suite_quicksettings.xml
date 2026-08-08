@@ -90,6 +90,36 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="qs_scrim_color_category"
+        android:title="@string/qs_scrim_color_category_title">
+
+        <com.infinity.support.preferences.SystemSettingSwitchPreference
+            android:key="custom_shade_color_enabled"
+            android:title="@string/custom_shade_color_enabled_title"
+            android:summary="@string/custom_shade_color_enabled_summary"
+            android:defaultValue="false" />
+
+        <com.infinity.support.preferences.colorpicker.SystemSettingColorPickerPreference
+            android:key="custom_shade_color"
+            android:title="@string/custom_shade_color_title"
+            android:dependency="custom_shade_color_enabled"
+            android:defaultValue="#1a1a1a" />
+
+        <com.infinity.support.preferences.SystemSettingSwitchPreference
+            android:key="custom_notif_scrim_color_enabled"
+            android:title="@string/custom_notif_scrim_color_enabled_title"
+            android:summary="@string/custom_notif_scrim_color_enabled_summary"
+            android:defaultValue="false" />
+
+        <com.infinity.support.preferences.colorpicker.SystemSettingColorPickerPreference
+            android:key="custom_notif_scrim_color"
+            android:title="@string/custom_notif_scrim_color_title"
+            android:dependency="custom_notif_scrim_color_enabled"
+            android:defaultValue="#1a1a1a" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
          android:title="@string/footer_category">
 
         <com.infinity.support.preferences.SystemSettingSwitchPreference
