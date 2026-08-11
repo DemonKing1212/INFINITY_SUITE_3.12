@@ -36,6 +36,14 @@
         android:summary="@string/settings_icon_summary"
         android:fragment="com.infinity.suite.fragments.SettingIcons" />
 
+    <com.infinity.support.preferences.SecureSettingListPreference
+        android:key="power_menu_compose_style"
+        android:title="@string/power_menu_compose_style_title"
+        android:entries="@array/power_menu_compose_style_entries"
+        android:entryValues="@array/power_menu_compose_style_values"
+        android:defaultValue="1"
+        android:summary="%s" />
+
         <!-- System Animation styles  -->
         <com.infinity.support.preferences.SystemSettingListPreference
             android:key="system_animation_style"
