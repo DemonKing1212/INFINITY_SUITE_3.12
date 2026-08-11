@@ -754,4 +754,10 @@
     <string name="screenshot_clipboard_only_title">Copy to clipboard only</string>
     <string name="screenshot_clipboard_only_summary">Copy screenshot to clipboard instead of saving in storage</string>
 
+    <!-- Power menu styles -->
+    <string name="power_menu_compose_style_title">Power menu style</string>
+    <string name="power_menu_compose_style_legacy">Legacy</string>
+    <string name="power_menu_compose_style_grid">Grid</string>
+    <string name="power_menu_compose_style_slider">Slider</string>
+
 </resources>
