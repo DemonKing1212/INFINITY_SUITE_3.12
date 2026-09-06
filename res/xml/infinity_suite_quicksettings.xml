@@ -99,7 +99,7 @@
             android:summary="@string/custom_shade_color_enabled_summary"
             android:defaultValue="false" />
 
-        <com.infinity.support.preferences.colorpicker.SystemSettingColorPickerPreference
+        <com.infinity.support.colorpicker.SystemSettingColorPickerPreference
             android:key="custom_shade_color"
             android:title="@string/custom_shade_color_title"
             android:dependency="custom_shade_color_enabled"
@@ -111,7 +111,7 @@
             android:summary="@string/custom_notif_scrim_color_enabled_summary"
             android:defaultValue="false" />
 
-        <com.infinity.support.preferences.colorpicker.SystemSettingColorPickerPreference
+        <com.infinity.support.colorpicker.SystemSettingColorPickerPreference
             android:key="custom_notif_scrim_color"
             android:title="@string/custom_notif_scrim_color_title"
             android:dependency="custom_notif_scrim_color_enabled"
