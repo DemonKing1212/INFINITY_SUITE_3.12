@@ -77,7 +77,7 @@
             android:summary="@string/miscellaneous_ignore_window_secure_summary"
             android:defaultValue="true" />
 
-        <com.infinity.support.preferences.SystemSettingSwitchPreference
+        <com.infinity.support.preferences.GlobalSettingSwitchPreference
             android:key="hide_screen_capture_status"
             android:title="@string/hide_screen_capture_status_title"
             android:summary="@string/hide_screen_capture_status_summary"
