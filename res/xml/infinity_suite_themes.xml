@@ -44,6 +44,14 @@
         android:defaultValue="1"
         android:summary="%s" />
 
+    <com.infinity.support.preferences.SecureSettingListPreference
+        android:key="volume_dialog_type"
+        android:title="@string/volume_dialog_type_title"
+        android:summary="@string/volume_dialog_type_summary"
+        android:entries="@array/volume_dialog_type_entries"
+        android:entryValues="@array/volume_dialog_type_values"
+        android:defaultValue="1" />
+
         <!-- System Animation styles  -->
         <com.infinity.support.preferences.SystemSettingListPreference
             android:key="system_animation_style"

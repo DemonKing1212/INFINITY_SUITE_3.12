@@ -76,6 +76,7 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
     private static final String TAG = "ThemesSettings";
     private static final String KEY_EMOJI_STYLE = "emoji_style";
     private static final String KEY_SYSTEM_ANIMATION_STYLE = "system_animation_style";
+    private static final String KEY_VOLUME_DIALOG_TYPE = "volume_dialog_type";
     private static final String PROP_ACTIVITY_ANIM_PERF_OVERRIDE =
             "persist.sys.activity_anim_perf_override";
     private static final String PROP_EMOJI_STYLE = "persist.sys.ax_emoji_style";
@@ -84,6 +85,7 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
     private Context mContext;
     private SystemSettingListPreference mEmojiStylePref;
     private SystemSettingListPreference mSystemAnimationStylePref;
+    private SystemSettingListPreference mVolumeDialogType;
     private GlobalSettingListPreference mLockSound;
 private GlobalSettingListPreference mUnlockSound;
 
@@ -118,6 +120,10 @@ if (mUnlockSound != null) {
         if (mSystemAnimationStylePref != null) {
             updateSystemAnimationStyleAvailability();
         }
+        mVolumeDialogType = findPreference(KEY_VOLUME_DIALOG_TYPE);
+        if (mVolumeDialogType != null) {
+            mVolumeDialogType.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -138,7 +144,7 @@ if (mUnlockSound != null) {
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
-      if (preference == mLockSound || preference == mUnlockSound) {
+      if (preference == mLockSound || preference == mUnlockSound || preference == mVolumeDialogType) {
     SystemUtils.showSystemUiRestartDialog(getContext());
     return true;
 }return false;
