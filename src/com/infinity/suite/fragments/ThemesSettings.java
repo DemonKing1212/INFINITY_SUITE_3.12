@@ -65,6 +65,7 @@ import com.android.internal.util.android.SystemRestartUtils;
 
 import com.infinity.support.colorpicker.ColorPickerPreference;
 import com.infinity.support.preferences.SystemSettingListPreference;
+import com.infinity.support.preferences.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -77,17 +78,27 @@ public class ThemesSettings extends SettingsPreferenceFragment implements OnPref
     private static final String KEY_EMOJI_STYLE = "emoji_style";
     private static final String KEY_SYSTEM_ANIMATION_STYLE = "system_animation_style";
     private static final String KEY_VOLUME_DIALOG_TYPE = "volume_dialog_type";
+    private static final String KEY_AXION_VOLUME_STYLE = "axion_volume_style";
+
+    private static final int VOLUME_TYPE_AXION = 0;
+    private static final int VOLUME_TYPE_REDESIGNED = 1;
+    private static final int VOLUME_TYPE_STOCK = 2;
+    private static final String KEY_SHOW_VOLUME_PERCENTAGE = "show_volume_percentage";
     private static final String PROP_ACTIVITY_ANIM_PERF_OVERRIDE =
             "persist.sys.activity_anim_perf_override";
     private static final String PROP_EMOJI_STYLE = "persist.sys.ax_emoji_style";
     private static final String DEFAULT_EMOJI_STYLE = "android";
 
     private Context mContext;
+
     private SystemSettingListPreference mEmojiStylePref;
     private SystemSettingListPreference mSystemAnimationStylePref;
     private SystemSettingListPreference mVolumeDialogType;
+    private SystemSettingListPreference mAxionVolumeStyle;
+    private SystemSettingSwitchPreference mShowVolumePercentage;
+
     private GlobalSettingListPreference mLockSound;
-private GlobalSettingListPreference mUnlockSound;
+    private GlobalSettingListPreference mUnlockSound;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,15 +108,14 @@ private GlobalSettingListPreference mUnlockSound;
 
         mContext = getActivity();
         mLockSound = findPreference("lock_sound");
-if (mLockSound != null) {
-    mLockSound.setOnPreferenceChangeListener(this);
-}
+        if (mLockSound != null) {
+            mLockSound.setOnPreferenceChangeListener(this);
+        }
 
-mUnlockSound = findPreference("unlock_sound");
-if (mUnlockSound != null) {
-    mUnlockSound.setOnPreferenceChangeListener(this);
-}
-
+        mUnlockSound = findPreference("unlock_sound");
+        if (mUnlockSound != null) {
+            mUnlockSound.setOnPreferenceChangeListener(this);
+        }
 
         final ContentResolver resolver = getActivity().getContentResolver();
         final PreferenceScreen screen = getPreferenceScreen();
@@ -120,10 +130,17 @@ if (mUnlockSound != null) {
         if (mSystemAnimationStylePref != null) {
             updateSystemAnimationStyleAvailability();
         }
+
         mVolumeDialogType = findPreference(KEY_VOLUME_DIALOG_TYPE);
         if (mVolumeDialogType != null) {
             mVolumeDialogType.setOnPreferenceChangeListener(this);
         }
+
+        mAxionVolumeStyle = findPreference(KEY_AXION_VOLUME_STYLE);
+        mShowVolumePercentage = findPreference(KEY_SHOW_VOLUME_PERCENTAGE);
+
+        updateVolumeRelatedVisibility(getCurrentVolumeDialogType());
+
     }
 
     @Override
@@ -137,6 +154,7 @@ if (mUnlockSound != null) {
         updateSystemAnimationStyleAvailability();
     }
 
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mEmojiStylePref) {
@@ -144,10 +162,20 @@ if (mUnlockSound != null) {
             SystemRestartUtils.showSystemRestartDialog(getContext());
             return true;
         }
-      if (preference == mLockSound || preference == mUnlockSound || preference == mVolumeDialogType) {
-    SystemUtils.showSystemUiRestartDialog(getContext());
-    return true;
-}return false;
+
+        if (preference == mVolumeDialogType) {
+            SystemUtils.showSystemUiRestartDialog(getContext());
+            int val = Integer.parseInt((String) newValue);
+            updateVolumeRelatedVisibility(val);
+            return true;
+        }
+
+        if (preference == mLockSound || preference == mUnlockSound) {
+            SystemUtils.showSystemUiRestartDialog(getContext());
+            return true;
+        }
+
+        return false;
     }
 
     private void updateSystemAnimationStyleAvailability() {
@@ -165,7 +193,25 @@ if (mUnlockSound != null) {
             }
         }
     }
-    
+
+    private int getCurrentVolumeDialogType() {
+        return Settings.System.getIntForUser(
+                getContext().getContentResolver(),
+                KEY_VOLUME_DIALOG_TYPE,
+                VOLUME_TYPE_REDESIGNED,
+                UserHandle.USER_CURRENT);
+    }
+
+    private void updateVolumeRelatedVisibility(int type) {
+        if (mAxionVolumeStyle != null) {
+            mAxionVolumeStyle.setVisible(type == VOLUME_TYPE_AXION);
+        }
+
+        if (mShowVolumePercentage != null) {
+            mShowVolumePercentage.setVisible(type == VOLUME_TYPE_REDESIGNED);
+        }
+    }
+
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
             new BaseSearchIndexProvider(R.xml.infinity_suite_themes) {
 
